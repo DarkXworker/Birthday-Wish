@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Khusi! 💝</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500&family=Dancing+Script:wght@700&family=Great+Vibes&family=Sacramento&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4, #ff1493);
+            color: white;
+            overflow-x: hidden;
+            position: relative;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 1s ease;
+        }
+
+        .page {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 1s ease;
+            padding: 20px;
+        }
+
+        .page.active {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            z-index: 10;
+        }
+
+        /* Page 1 Styles */
+        #page1 {
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4, #ff1493);
+        }
+
+        #page1 .container {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        #page1 h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideInFromLeft 1.2s ease-out 0.5s forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.7);
+            margin-top: 1rem;
+            text-decoration: none;
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideInFromLeft 1.2s ease-out 1s forwards;
+        }
+
+        .btn:hover {
+            transform: scale(1.05) translateX(0);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.9);
+        }
+
+        /* Page 2 Styles */
+        #page2 {
+            background: linear-gradient(135deg, #ffb6c1, #ff69b4, #ff1493);
+        }
+
+        .content-left {
+            flex: 1;
+            padding-right: 20px;
+        }
+
+        .image-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.7);
+            position: relative;
+            animation: pulse 2s infinite;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.5s forwards, pulse 2s infinite 1.5s;
+        }
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideInFromLeft 1.2s ease-out 1s forwards, glow 3s infinite 2s;
+        }
+
+        h2 {
+            font-family: 'Sacramento', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideInFromLeft 1.2s ease-out 1.3s forwards;
+        }
+
+        .message {
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+
+        .message-line {
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(-100px);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .message-line:nth-child(1) {
+            animation: slideInFromLeft 1s ease-out 1.6s forwards;
+        }
+        .message-line:nth-child(2) {
+            animation: slideInFromLeft 1s ease-out 1.9s forwards;
+        }
+        .message-line:nth-child(3) {
+            animation: slideInFromLeft 1s ease-out 2.2s forwards;
+        }
+        .message-line:nth-child(4) {
+            animation: slideInFromLeft 1s ease-out 2.5s forwards;
+        }
+
+        .countdown {
+            font-size: 1.2rem;
+            margin-top: 30px;
+            text-align: left;
+            opacity: 0;
+            transform: translateX(-100px);
+            animation: slideInFromLeft 1s ease-out 2.8s forwards;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .firework {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px #fff;
+            z-index: 2;
+        }
+
+        .photo-frame {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            animation: frameGlow 2s infinite alternate;
+        }
+
+        .image-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .image-buttons .interactive-btn {
+            opacity: 0;
+            transform: translateX(100px);
+            animation: slideInFromRight 1s ease-out forwards;
+        }
+
+        .image-buttons .interactive-btn:nth-child(1) {
+            animation-delay: 1.6s;
+        }
+        .image-buttons .interactive-btn:nth-child(2) {
+            animation-delay: 1.9s;
+        }
+
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            animation: floatUp linear infinite;
+            opacity: 0.7;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+            animation: sparkleMove linear infinite;
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        @keyframes sparkleMove {
+            to {
+                transform: translateY(-100vh) translateX(20px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInFromLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFromRight {
+            from { 
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255, 105, 180, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 105, 180, 0); }
+        }
+
+        @keyframes glow {
+            0%, 100% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+            50% { text-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+        }
+
+        @keyframes frameGlow {
+            0% { border-color: rgba(255, 255, 255, 0.3); box-shadow: 0 0 10px rgba(255, 105, 180, 0.3); }
+            100% { border-color: rgba(255, 255, 255, 0.7); box-shadow: 0 0 20px rgba(255, 105, 180, 0.7); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .content-left {
+                padding-right: 0;
+            }
+            
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+            
+            #page1 h1 {
+                font-size: 2.2rem;
+                padding: 0 20px;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .message {
+                font-size: 1.1rem;
+                padding: 0 15px;
+            }
+            
+            .countdown {
+                text-align: center;
+                margin-top: 20px;
+            }
+            
+            .image-buttons {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1 - Splash Screen -->
+    <div id="page1" class="page active">
+        <div class="hearts" id="heartsContainer1"></div>
+        
+        <div class="container">
+            <h1>Hey Khusi 💗<br>Click below for your special surprise 🎁</h1>
+            <button id="surpriseBtn" class="btn">Click Here 💖</button>
+        </div>
+    </div>
+
+    <!-- Page 2 - Main Birthday Page -->
+    <div id="page2" class="page">
+        <div class="hearts" id="heartsContainer2"></div>
+        <div class="sparkles" id="sparklesContainer"></div>
+        <div id="fireworksContainer"></div>
+        
+        <div class="container">
+            <div class="content-left">
+                <h1>Happy 19th Birthday, Khusi 🎂</h1>
+                <h2>You're the heartbeat of pink magic 🌸</h2>
+                
+                <div class="message">
+                    <div class="message-line">May your smile never fade and your dreams shine brighter</div>
+                    <div class="message-line">than every light in the sky 💫</div>
+                    <div class="message-line">&nbsp;</div>
+                    <div class="message-line">You're not just loved — you're celebrated 💕</div>
+                </div>
+
+                <!-- Countdown to Next Birthday -->
+                <div class="countdown" id="countdown">
+                    Counting down to your next birthday...
+                </div>
+            </div>
+            
+            <div class="image-right">
+                <div class="photo-frame">
+                    <img src="https://files.catbox.moe/hpvzq0.jpg" alt="Khusi" class="profile-img">
+                </div>
+                <div class="image-buttons">
+                    <button class="interactive-btn" id="virtualGift">🎁 Open Virtual Gift</button>
+                    <button class="interactive-btn" id="fireworksBtn">🎆 Launch Fireworks</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="https://github.com/DevSudipx/DoYouLoveMe/raw/main/ik_kudi_full_clip.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        // Page navigation
+        document.getElementById('surpriseBtn').addEventListener('click', function() {
+            document.getElementById('page1').classList.remove('active');
+            setTimeout(() => {
+                document.getElementById('page2').classList.add('active');
+                // Start music when page 2 is shown
+                startMusic();
+                // Start countdown
+                startCountdown();
+            }, 500);
+        });
+
+        // Virtual Gift
+        document.getElementById('virtualGift').addEventListener('click', function() {
+            const gifts = [
+                "🎀 A lifetime of happiness and laughter!",
+                "💝 Endless cuddles and warm hugs!",
+                "🌹 A garden of beautiful moments together!",
+                "📸 Countless memories waiting to be created!",
+                "🌟 All the stars in the sky for your dreams!"
+            ];
+            
+            const randomGift = gifts[Math.floor(Math.random() * gifts.length)];
+            alert("Your virtual gift: " + randomGift);
+            document.getElementById('virtualGift').textContent = "🎁 Another Gift!";
+        });
+
+        // Fireworks
+        document.getElementById('fireworksBtn').addEventListener('click', function() {
+            createFireworks();
+        });
+
+        // Countdown to next birthday
+        function startCountdown() {
+            const now = new Date();
+            let nextBirthday = new Date(now.getFullYear(), 10, 1); // November 1st (adjust as needed)
+            
+            if (now > nextBirthday) {
+                nextBirthday.setFullYear(nextBirthday.getFullYear() + 1);
+            }
+            
+            function updateCountdown() {
+                const currentTime = new Date();
+                const diff = nextBirthday - currentTime;
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                
+                document.getElementById('countdown').innerHTML = 
+                    `Only <strong>${days}</strong> days, <strong>${hours}</strong> hours, and <strong>${minutes}</strong> minutes until your 20th birthday! 🎉`;
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 60000);
+        }
+
+        // Fireworks effect
+        function createFireworks() {
+            const container = document.getElementById('fireworksContainer');
+            const colors = ['#ff69b4', '#ff1493', '#ffb6c1', '#ffffff', '#ffd1dc'];
+            
+            for (let i = 0; i < 30; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                
+                const size = Math.random() * 4 + 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                firework.style.width = `${size}px`;
+                firework.style.height = `${size}px`;
+                firework.style.background = color;
+                firework.style.left = `${Math.random() * 100}%`;
+                firework.style.top = `${Math.random() * 100}%`;
+                firework.style.animation = `sparkleMove ${Math.random() * 3 + 2}s linear`;
+                
+                container.appendChild(firework);
+                
+                setTimeout(() => {
+                    firework.remove();
+                }, 2000);
+            }
+        }
+
+        // Create floating hearts for page 1
+        function createHeartsPage1() {
+            const heartsContainer = document.getElementById('heartsContainer1');
+            const heartCount = 15;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '💗';
+                
+                // Random properties
+                const left = Math.random() * 100;
+                const size = Math.random() * 20 + 10;
+                const duration = Math.random() * 10 + 10;
+                const delay = Math.random() * 5;
+                
+                heart.style.left = `${left}%`;
+                heart.style.fontSize = `${size}px`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.animationDelay = `${delay}s`;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+
+        // Create floating hearts for page 2
+        function createHeartsPage2() {
+            const heartsContainer = document.getElementById('heartsContainer2');
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '💗';
+                
+                // Random properties
+                const left = Math.random() * 100;
+                const size = Math.random() * 20 + 10;
+                const duration = Math.random() * 15 + 15;
+                const delay = Math.random() * 5;
+                
+                heart.style.left = `${left}%`;
+                heart.style.fontSize = `${size}px`;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.animationDelay = `${delay}s`;
+                
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        // Create sparkle particles
+        function createSparkles() {
+            const sparklesContainer = document.getElementById('sparklesContainer');
+            const sparkleCount = 30;
+            
+            for (let i = 0; i < sparkleCount; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.classList.add('sparkle');
+                
+                // Random properties
+                const left = Math.random() * 100;
+                const size = Math.random() * 3 + 2;
+                const duration = Math.random() * 20 + 20;
+                const delay = Math.random() * 10;
+                
+                sparkle.style.left = `${left}%`;
+                sparkle.style.width = `${size}px`;
+                sparkle.style.height = `${size}px`;
+                sparkle.style.animationDuration = `${duration}s`;
+                sparkle.style.animationDelay = `${delay}s`;
+                
+                sparklesContainer.appendChild(sparkle);
+            }
+        }
+        
+        // Music autoplay function
+        function startMusic() {
+            const audio = document.getElementById('bgMusic');
+            audio.volume = 0.5;
+            
+            // Try to play music
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(() => {
+                    // If autoplay fails, show a play button
+                    const playButton = document.createElement('button');
+                    playButton.textContent = 'Click to Play Music';
+                    playButton.style.cssText = `
+                        position: fixed;
+                        bottom: 20px;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        padding: 10px 20px;
+                        background: rgba(255,255,255,0.2);
+                        border: none;
+                        border-radius: 50px;
+                        color: white;
+                        font-family: Poppins;
+                        cursor: pointer;
+                        z-index: 100;
+                    `;
+                    playButton.addEventListener('click', () => {
+                        audio.play();
+                        playButton.remove();
+                    });
+                    document.body.appendChild(playButton);
+                });
+            }
+        }
+        
+        // Initialize on load
+        window.onload = function() {
+            createHeartsPage1();
+            createHeartsPage2();
+            createSparkles();
+        };
+    </script>
+</body>
+</html>
